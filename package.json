@@ -1,0 +1,15 @@
+{
+  "name": "pulsar-client",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "launcher",
+    "backend"
+  ],
+  "scripts": {
+    "dev:launcher": "npm run tauri dev --workspace=launcher",
+    "build:launcher": "npm run tauri build --workspace=launcher",
+    "dev:backend": "npm run dev --workspace=backend",
+    "start:backend": "npm run start --workspace=backend"
+  }
+}

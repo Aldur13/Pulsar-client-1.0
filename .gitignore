@@ -1,0 +1,27 @@
+# Node
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+
+# Rust / Tauri
+launcher/src-tauri/target/
+launcher/src-tauri/Cargo.lock
+
+# Env
+.env
+.env.local
+*.pem
+
+# Game data downloaded at runtime
+launcher/.minecraft-dev/
+backend/data/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

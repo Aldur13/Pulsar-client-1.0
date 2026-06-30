@@ -1,0 +1,30 @@
+[package]
+name = "pulsar-client"
+version = "0.1.0"
+description = "Pulsar Client Minecraft launcher"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "pulsar_client_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "stream"] }
+futures-util = "0.3"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+sha1 = "0.10"
+hex = "0.4"
+dirs = "5"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]

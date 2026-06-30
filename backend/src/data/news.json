@@ -1,0 +1,20 @@
+[
+  {
+    "id": "news-1",
+    "title": "Pulsar Client launches",
+    "body": "Welcome to Pulsar Client! Real Microsoft login, capes, and a curated mod set powered by Fabric, Sodium, Iris, and Lithium.",
+    "publishedAt": "2026-06-01T12:00:00Z"
+  },
+  {
+    "id": "news-2",
+    "title": "Cosmetics: capes are live",
+    "body": "Equip a cape from the Cosmetics tab. More cosmetic types are coming in future updates.",
+    "publishedAt": "2026-06-15T09:30:00Z"
+  },
+  {
+    "id": "news-3",
+    "title": "Mod manifest updates without a launcher rebuild",
+    "body": "The mod list is now served from the backend, so we can push updates instantly without requiring you to download a new launcher version.",
+    "publishedAt": "2026-06-28T18:45:00Z"
+  }
+]
