@@ -2,6 +2,10 @@ use std::path::PathBuf;
 
 pub const PINNED_MINECRAFT_VERSION: &str = "1.21.4";
 pub const PINNED_FABRIC_LOADER_VERSION: &str = "0.16.10";
+// Kept for parity with the backend manifest contract; we install Fabric via the
+// meta.fabricmc.net loader profile API directly rather than running the installer jar,
+// so this version is not consumed anywhere yet.
+#[allow(dead_code)]
 pub const PINNED_FABRIC_INSTALLER_VERSION: &str = "1.0.1";
 
 pub const BACKEND_MANIFEST_URL: &str = "http://localhost:8787/api/mods/manifest";

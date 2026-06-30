@@ -79,17 +79,12 @@ pub struct LibraryDownloads {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct NativesMap {
-    #[serde(flatten)]
-    pub map: HashMap<String, String>,
-}
-
-#[derive(Debug, Deserialize)]
 pub struct Library {
     pub name: String,
     pub downloads: Option<LibraryDownloads>,
     pub rules: Option<Vec<Rule>>,
     pub natives: Option<HashMap<String, String>>,
+    #[allow(dead_code)]
     pub url: Option<String>,
 }
 
@@ -127,12 +122,14 @@ pub struct VersionArguments {
 #[derive(Debug, Deserialize)]
 pub struct VersionJson {
     pub id: String,
+    #[allow(dead_code)]
     #[serde(rename = "mainClass")]
     pub main_class: String,
     pub downloads: VersionDownloads,
     pub libraries: Vec<Library>,
     #[serde(rename = "assetIndex")]
     pub asset_index: AssetIndexRef,
+    #[allow(dead_code)]
     pub assets: String,
     pub arguments: Option<VersionArguments>,
     #[serde(rename = "minecraftArguments")]

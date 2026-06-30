@@ -70,7 +70,7 @@ pub async fn sync_locked_mods(
             &manifest_mod.url,
             &dest,
             None,
-            Some(&manifest_mod.sha1).filter(|s| !s.is_empty()),
+            Some(manifest_mod.sha1.as_str()).filter(|s| !s.is_empty()),
             |_| {},
         )
         .await?;
@@ -208,13 +208,4 @@ pub fn remove_mod(instance_dir: &Path, id: &str) -> Result<(), String> {
     state.mods.retain(|m| m.id != id);
     state.save(instance_dir)?;
     Ok(())
-}
-
-pub fn enabled_mod_jar_paths(instance_dir: &Path) -> Vec<std::path::PathBuf> {
-    ModsState::load(instance_dir)
-        .mods
-        .iter()
-        .filter(|m| m.enabled)
-        .map(|m| config::mods_dir(instance_dir).join(&m.filename))
-        .collect()
 }

@@ -20,6 +20,7 @@ pub struct FabricLibraries {
 
 #[derive(Debug, Deserialize)]
 pub struct FabricProfileJson {
+    #[allow(dead_code)]
     pub id: String,
     #[serde(rename = "mainClass")]
     pub main_class: String,
