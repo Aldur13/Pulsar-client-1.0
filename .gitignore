@@ -7,7 +7,6 @@ npm-debug.log*
 
 # Rust / Tauri
 launcher/src-tauri/target/
-launcher/src-tauri/Cargo.lock
 launcher/src-tauri/gen/schemas/
 
 # Env
