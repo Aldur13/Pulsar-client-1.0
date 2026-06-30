@@ -4,6 +4,7 @@ export const BACKEND_URL =
 export interface AuthUser {
   id: string;
   username: string;
+  accessToken: string;
 }
 
 export interface ManifestMod {

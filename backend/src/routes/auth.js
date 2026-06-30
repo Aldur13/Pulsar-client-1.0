@@ -22,7 +22,7 @@ router.get("/microsoft/callback", async (req, res) => {
   }
 
   try {
-    const { profile } = await fullLoginChain(code);
+    const { mcAccessToken, profile } = await fullLoginChain(code);
 
     const session = getSession();
     try {
@@ -34,15 +34,19 @@ router.get("/microsoft/callback", async (req, res) => {
       await session.close();
     }
 
+    // Real Minecraft access tokens are valid ~24h, so the session cookie matches that
+    // lifetime rather than a long-lived 7d session. A "stay logged in" experience past
+    // that would need persisting the MS refresh_token and re-running fullLoginChain to
+    // mint a fresh mcAccessToken — left as a follow-up, not faked here.
     const token = jwt.sign(
-      { sub: profile.id, username: profile.name },
+      { sub: profile.id, username: profile.name, mcAccessToken },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "23h" }
     );
 
     res.cookie("pulsar_session", token, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 23 * 60 * 60 * 1000,
       sameSite: "lax",
     });
 
@@ -63,7 +67,11 @@ router.get("/me", (req, res) => {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    res.json({ id: payload.sub, username: payload.username });
+    res.json({
+      id: payload.sub,
+      username: payload.username,
+      accessToken: payload.mcAccessToken,
+    });
   } catch {
     res.status(401).json({ error: "unauthorized" });
   }

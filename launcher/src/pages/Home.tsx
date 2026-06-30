@@ -60,7 +60,7 @@ export default function Home() {
     setError(null);
     setLaunching(true);
     try {
-      await launchGame(user.username, user.id, "");
+      await launchGame(user.username, user.id, user.accessToken);
     } catch (e) {
       setError(String(e));
     } finally {

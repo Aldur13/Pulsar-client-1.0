@@ -11,8 +11,9 @@ use crate::settings::Settings;
 use crate::state::AppState;
 
 #[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct InstallStatusDto {
-    pub minecraft_version: String,
+    pub pinned_version: String,
     pub fabric_loader_version: String,
     pub vanilla_installed: bool,
     pub fabric_installed: bool,
@@ -34,7 +35,7 @@ pub async fn get_install_status(state: State<'_, AppState>) -> Result<InstallSta
     let mods_installed = install::are_locked_mods_installed(&instance_dir, &manifest);
 
     Ok(InstallStatusDto {
-        minecraft_version: config::PINNED_MINECRAFT_VERSION.to_string(),
+        pinned_version: config::PINNED_MINECRAFT_VERSION.to_string(),
         fabric_loader_version: config::PINNED_FABRIC_LOADER_VERSION.to_string(),
         vanilla_installed,
         fabric_installed,
